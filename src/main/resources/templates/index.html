@@ -47,10 +47,26 @@
 				<a th:href="@{/mapdata}" class="btn btn-primary">查詢學生自主通報累計確診和足跡</a>
 				<button type="button" class="btn btn-danger" data-bs-toggle="modal"
 					data-bs-target="#staticBackdrop">我是確診者我願意通報</button>
+				<a th:href="@{/message}" class="btn btn-success">幫助同學加油打氣</a>
 			</div>
 		</div>
 	</div>
 
+	<hr>
+	<div class="container">
+		<h4 class="fw-bold" style="text-align: center;">幫同學打氣</h4>
+		<div class="list-group" th:each="message :${message}">
+			<div class="list-group-item list-group-item-action d-flex gap-3 py-3">
+				<div class="d-flex gap-2 w-100 justify-content-between">
+					<div>
+						<h6 class="mb-0" th:text="${message.name}"></h6>
+						<p class="mb-0 opacity-75 " th:text="${message.message}"></p>
+					</div>
+					<small class="opacity-50 text-nowrap" th:text="${message.createdatetime}"></small>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- Modal -->
 	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -78,7 +94,9 @@
 	</div>
 
 	<footer class="bg-light text-center text-lg-start">
-		<p></p><p></p><p></p>
+		<p></p>
+		<p></p>
+		<p></p>
 		<div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
 			© 2022 東吳資管Howard &ensp;
 			<a class="text-reset fw-bold" href="mailto:a22511234@gmail.com">Send me mail</a>

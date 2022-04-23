@@ -40,12 +40,24 @@
 		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<div class="modal-header" id="modal-header">
-					</div>
-					<div class="modal-body" id="modal-body">
-					</div>
-					<div class="modal-footer" id="modal-footer">
-					</div>
+					<form action="#" th:action="${'/track'+'/'+{code}}" th:object=${user} method="POST">
+						<div class="modal-header" id="modal-header">
+						</div>
+						<div class="modal-body" id="modal-body">
+						</div>
+						<div class="modal-footer" id="modal-footer">
+						</div>
+						<div style="display: none;">
+							<input type="text" th:field="*{dept}" th:value="#{user.dept}">
+							<input type="text" th:field="*{grade}" th:value="#{user.grade}">
+							<input type="text" th:field="*{classname}" th:value="#{user.classname}">
+							<input type="text" th:field="*{method}"  th:value="#{user.method}">
+							<input type="text" th:field="*{date}" th:value="#{user.date}">
+							<input type="text" th:field="*{mail}" th:value="#{user.mail}">
+							<input type="text" th:field="*{Createdate}" th:value="#{user.Createdate}">
+							<input type="text" th:field="*{code}" th:value="#{user.mail}">
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -64,7 +76,7 @@
 			var body = document.getElementById('modal-body');
 			body.innerHTML = "<p>email驗證正確 繼續填寫足跡八吧!</p>";
 			var foot = document.getElementById('modal-footer');
-			foot.innerHTML = "<a href='/track/" + correctcode + "' class='btn btn-primary' id='btn' >填足跡</a>";
+			foot.innerHTML = "<button type='submit' class='btn btn-primary' id='btn'>填足跡</button>";
 		}
 		else {
 			var title = document.getElementById('modal-header');

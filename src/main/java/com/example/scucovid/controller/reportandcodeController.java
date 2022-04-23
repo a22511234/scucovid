@@ -31,8 +31,6 @@ public class reportandcodeController {
 
 	@PostMapping("/reportcode")
 	public String submit(@ModelAttribute("User") User user, Model model) {
-		System.out.println(user);
-		model.addAttribute("user", user);
 		Date date = new Date(System.currentTimeMillis());
 		user.setCreatedate(date.toString());
 		Random rm = new Random();
@@ -41,7 +39,8 @@ public class reportandcodeController {
 		System.out.print(user.getMail());
 		user.setCode(Integer.toString(value));
 		model.addAttribute("code", value);
-		userService.addUser(user);
+		model.addAttribute("user", user);
+		//userService.addUser(user);
 
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setFrom("07156145@scu.edu.tw");
@@ -52,13 +51,14 @@ public class reportandcodeController {
 		return "reportcode";
 	}
 
-	@GetMapping("/track/{code}")
-	public String track(@PathVariable(value = "code") String code,Model model) {
+	@PostMapping("/track/{code}")
+	public String track(@PathVariable(value = "code") String code,Model model,@ModelAttribute("User") User user) {
 		Truck truck = new Truck();
 		model.addAttribute("truck", truck);
 		model.addAttribute("code", code);
 		List<Truck> list = truckService.findbycode(code);
 		model.addAttribute("data", list);
+		userService.addUser(user);
 		return "track";
 
 	}

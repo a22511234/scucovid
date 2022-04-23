@@ -88,7 +88,7 @@
 				<div class="input-group mb-3">
 					<label class="input-group-text" for="inputGroupSelect03">班級</label>
 					<select class="form-select" id="inputGroupSelect03" th:field="*{classname}">
-						<option th:value="班級" th:text="班級" selected></option>
+						<option th:value="班級" th:text="班級" selected ></option>
 						<option th:value="A" th:text="A班"></option>
 						<option th:value="B" th:text="B班"> </option>
 						<option th:value="C" th:text="C班"> </option>
@@ -99,8 +99,8 @@
 			<div class="row">
 				<div class="input-group mb-3">
 					<select class="form-select" id="inputGroupSelect04" th:field="*{method}">
-						<option th:value="PCR" th:text="PCR核酸檢測"> </option>
-						<option th:value="快篩" th:text="快篩檢測"> </option>
+						<option th:value="PCR核酸檢測" th:text="PCR核酸檢測"> </option>
+						<option th:value="快篩檢測" th:text="快篩檢測"> </option>
 					</select>
 					<label class="input-group-text" for="inputGroupSelect04">檢測確診方式</label>
 				</div>
@@ -121,7 +121,7 @@
 			<div class="row">
 				<div class="input-group mb-3">
 					<span class="input-group-text" id="basic-addon1">@</span>
-					<input type="text" class="form-control" placeholder="E-mail" aria-label="E-mail"
+					<input type="email" class="form-control" placeholder="E-mail" aria-label="E-mail"
 						aria-describedby="basic-addon1" th:field="*{mail}">
 				</div>
 			</div>
