@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+		</script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js">
+	</script>
+	<title>東吳學生新冠肺炎自主通報地圖</title>
+</head>
+<header>
+	<div class="container">
+		<div class="row">
+			<p class="fs-1" style="text-align: center;">東吳學生新冠肺炎自主通報地圖</p>
+		</div>
+		<div class="row">
+			<p class="text-decoration-underline" style="text-align: center;">此平台非東吳大學官方平台 所有資料皆為同學自主上傳 請自行衡量資料 並判別假消息
+				本網站不會承擔任何責任</p>
+		</div>
+</header>
+
+<body>
+
+	<div class="container">
+		<form action="#" th:action="@{/reportcode}" th:object=${user} method="POST">
+			<div class="row">
+				<div class="input-group mb-3">
+					<label class="input-group-text" for="inputGroupSelect01">學系</label>
+					<select class="form-select" id="inputGroupSelect01" th:field="*{dept}">
+						<option th:value="學系" th:text="學系" selected> </option>
+						<option th:value="中國文學系" th:text="中國文學系"> </option>
+						<option th:value="歷史學系" th:text="歷史學系"> </option>
+						<option th:value="哲學系" th:text="哲學系"> </option>
+						<option th:value="政治學系" th:text="政治學系"> </option>
+						<option th:value="社會學系" th:text="社會學系"> </option>
+						<option th:value="社會工作學系" th:text="社會工作學系"> </option>
+						<option th:value="音樂學系" th:text="音樂學系"></option>
+						<option th:value="英文學系" th:text="英文學系"> </option>
+						<option th:value="日本語文學系" th:text="日本語文學系"> </option>
+						<option th:value="德國文化學系" th:text="德國文化學系"> </option>
+						<option th:value="數學系" th:text="數學系" value="數學系"> </option>
+						<option th:value="物理學系" th:text="物理學系"> </option>
+						<option th:value="化學系" th:text="化學系"> </option>
+						<option th:value="微生物學系" th:text="微生物學系"> </option>
+						<option th:value="心理學系" th:text="心理學系"> </option>
+						<option th:value="法律學系" th:text="法律學系"> </option>
+						<option th:value="經濟學系" th:text="經濟學系"> </option>
+						<option th:value="會計學系" th:text="會計學系"> </option>
+						<option th:value="企業管理學系" th:text="企業管理學系"> </option>
+						<option th:value="國際經營與貿易學系" th:text="國際經營與貿易學系"> </option>
+						<option th:value="財務工程與精算數學系" th:text="財務工程與精算數學系"> </option>
+						<option th:value="資訊管理學系" th:text="資訊管理學系"> </option>
+						<option th:value="商學進修學士班" th:text="商學進修學士班"> </option>
+						<option th:value="資料科學系" th:text="資料科學系"> </option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-group mb-3">
+					<select class="form-select" id="inputGroupSelect02" th:field="*{grade}">
+						<option th:value="年級" th:text="年級" selected> </option>
+						<option th:value="大一" th:text="大一"> </option>
+						<option th:value="大二" th:text="大二"> </option>
+						<option th:value="大三" th:text="大三"> </option>
+						<option th:value="大四" th:text="大四"> </option>
+						<option th:value="大五" th:text="大五"> </option>
+						<option th:value="延修生" th:text="延修生"> </option>
+					</select>
+					<label class="input-group-text" for="inputGroupSelect02">年級</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-group mb-3">
+					<label class="input-group-text" for="inputGroupSelect03">班級</label>
+					<select class="form-select" id="inputGroupSelect03" th:field="*{classname}">
+						<option th:value="班級" th:text="班級" selected></option>
+						<option th:value="A" th:text="A班"></option>
+						<option th:value="B" th:text="B班"> </option>
+						<option th:value="C" th:text="C班"> </option>
+						<option th:value="D" th:text="D班"> </option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-group mb-3">
+					<select class="form-select" id="inputGroupSelect04" th:field="*{method}">
+						<option th:value="PCR" th:text="PCR核酸檢測"> </option>
+						<option th:value="快篩" th:text="快篩檢測"> </option>
+					</select>
+					<label class="input-group-text" for="inputGroupSelect04">檢測確診方式</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-group mb-3">
+					<label class="input-group-text" for="inputGroupSelect05">確診日期</label>
+					<div class="input-group date" id="datepicker">
+						<input type="text" class="form-control" th:field="*{date}">
+						<span class="input-group-append">
+							<span class="input-group-text bg-white">
+								<i class="fa fa-calendar"></i>
+							</span>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="basic-addon1">@</span>
+					<input type="text" class="form-control" placeholder="E-mail" aria-label="E-mail"
+						aria-describedby="basic-addon1" th:field="*{mail}">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="d-grid gap-2">
+					<button type="submit" class="btn btn-primary">填寫足跡以及驗證碼</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<footer class="bg-light text-center text-lg-start">
+		<div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+			© 2022 東吳資管Howard &ensp;
+			<a class="text-reset fw-bold" href="mailto:a22511234@gmail.com">Send me mail</a>
+		</div>
+	</footer>
+</body>
+<script>
+	$(function () {
+		$('#datepicker').datepicker();
+	});
+
+</script>
+
+</html>

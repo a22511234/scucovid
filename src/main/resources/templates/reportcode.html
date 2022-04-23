@@ -1,0 +1,79 @@
+<head>
+	<!-- Required meta tags -->
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<!-- Bootstrap CSS -->
+	<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet'
+		integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous'>
+	<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js'
+		integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM' crossorigin='anonymous'>
+		</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<title>東吳學生新冠肺炎自主通報地圖</title>
+</head>
+
+<body>
+	<div class='container'>
+		<div class='row'>
+			<p class='fs-1' style='text-align: center;'>東吳學生新冠肺炎自主通報地圖</p>
+		</div>
+		<div class='row'>
+			<h5 class='text-decoration-underline' style='text-align: center;'>請輸入接收到的驗證碼，驗證碼有大機率出現在垃圾信件喔!</h5>
+		</div>
+		<div class='row'>
+			<div class='form-floating mb-3'>
+				<input type='email' class='form-control' id='entercode' name="password">
+				<label for='floatingInput'>驗證碼</label>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='d-grid gap-2'>
+				<button type='button' class='btn btn-primary' data-bs-toggle="modal" data-bs-target="#exampleModal"
+					onclick="check()">驗證E-mail</button>
+			</div>
+		</div>
+		<div>
+			<p th:text=${code} id="correctcode" style="display: none;"></p>
+		</div>
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header" id="modal-header">
+					</div>
+					<div class="modal-body" id="modal-body">
+					</div>
+					<div class="modal-footer" id="modal-footer">
+					</div>
+				</div>
+			</div>
+		</div>
+
+</body>
+<script th:inline="javascript">
+	function check() {
+		console.log(true);
+		var entercode = document.getElementById('entercode').value;
+		var correctcode = [[${code}]];
+		console.log(entercode);
+		console.log(correctcode);
+		if (entercode == correctcode) {
+			var title = document.getElementById('modal-header');
+			title.innerHTML = "<h5 class='modal-title' id='exampleModalLabel'>E-mail 驗證正確</h5>";
+			var body = document.getElementById('modal-body');
+			body.innerHTML = "<p>email驗證正確 繼續填寫足跡八吧!</p>";
+			var foot = document.getElementById('modal-footer');
+			foot.innerHTML = "<a href='/track/" + correctcode + "' class='btn btn-primary' id='btn' >填足跡</a>";
+		}
+		else {
+			var title = document.getElementById('modal-header');
+			title.innerHTML = "<h5 class='modal-title' id='exampleModalLabel'>E-mail 驗證錯誤</h5>";
+			var body = document.getElementById('modal-body');
+			body.innerHTML = "<p>email驗證錯誤 請重新填寫</p>";
+			var foot = document.getElementById('modal-footer');
+			foot.innerHTML = "<button type='button' class='btn btn-secondary' data-bs-dismiss='modal' id='btnc'>Close</button>";
+		}
+	}
+
+</script>

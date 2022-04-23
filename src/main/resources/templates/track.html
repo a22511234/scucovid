@@ -1,0 +1,95 @@
+<head>
+	<!-- Required meta tags -->
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+
+	<!-- Bootstrap CSS -->
+	<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet'
+		integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous'>
+
+	<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js'
+		integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM' crossorigin='anonymous'>
+		</script>
+	<title>東吳學生新冠肺炎自主通報地圖</title>
+</head>
+
+<body>
+	<div class='container'>
+		<div class='row'>
+			<p class='fs-1' style='text-align: center;'>東吳學生新冠肺炎自主通報地圖</p>
+		</div>
+		<div class='row'>
+			<h5 class='text-decoration-underline' style='text-align: center;'>請輸入您的足跡</h5>
+		</div>
+		<div class='row'>
+			<p class='fs-5'>足跡通報</p>
+		</div>
+		<table class='table table-hover'>
+			<thead>
+				<tr>
+					<th scope='col'>大樓</th>
+					<th scope='col'>教室</th>
+					<th scope='col'>足跡日期</th>
+					<th scope='col'>足跡時間</th>
+					<th scope='col'></th>
+				</tr>
+			</thead>
+			<tbody id='addcolum'>
+				<tr th:each="data :${data}">
+					<td th:text="${data.building}"></td>
+					<td th:text="${data.classroom}"></td>
+					<td th:text="${data.truck_date}"></td>
+					<td th:text="${data.truck_time}"></td>
+					<td>
+						
+						<a th:href="${'/del.do/'+{data.id}+'/'+{code}}"class='btn btn-danger'>刪除</a>
+					</td>
+				</tr>
+				<tr>
+					<form action="#" th:action="@{/save.do/{code}(code=${code})}" th:object=${truck} method="POST">
+						<td><input type='text' class='form-control' placeholder='第二大樓' aria-label='building'
+								aria-describedby='building' id='building' th:field="*{building}"> </td>
+						<td><input type='text' class='form-control' placeholder='2219' aria-label='classroom'
+								aria-describedby='classroom' id='classroom' th:field="*{classroom}"></td>
+						<td><input type='text' class='form-control' placeholder='2022-04-16' aria-label='date'
+								aria-describedby='date' id='date' th:field="*{truck_date}"></td>
+						<td><input type='text' class='form-control' placeholder='1800-2000' aria-label='datetime'
+								aria-describedby='datetime' id='datetime' th:field="*{truck_time}"></td>
+						<td>
+							<button type='submit' class='btn btn-primary' id='add'>新增</button>
+						</td>
+					</form>
+				</tr>
+
+			</tbody>
+		</table>
+		<div class='row'>
+			<div class='d-grid gap-2'>
+				 <a th:href="@{/}" class="btn btn-primary">完成並離開</a>
+			</div>
+		</div>
+	</div>
+	<footer class="bg-light text-center text-lg-start">
+		<div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+			© 2022 東吳資管Howard &ensp;
+			<a class="text-reset fw-bold" href="mailto:a22511234@gmail.com">Send me mail</a>
+		</div>
+	</footer>
+</body>
+
+<script th:inline="javascript">
+	window.οnlοad = showresult();
+	function showresult() {
+		var r = [[${result}]];
+		console.log(r);
+		if (r != null) {
+			if (r == "成功") {
+				alert('新增成功');
+			}
+			else {
+				alert('新增失敗 洽詢網頁開發者');
+			}
+		}
+
+	}
+</script>

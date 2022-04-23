@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+		</script>
+	<title>東吳學生新冠肺炎自主通報地圖</title>
+</head>
+<header>
+	<div class="container">
+		<div class="row">
+			<p class="fs-1" style="text-align: center;">東吳學生新冠肺炎自主通報地圖</p>
+		</div>
+		<div class="row">
+			<p class="text-decoration-underline" style="text-align: center;">此平台非東吳大學官方平台 所有資料皆為同學自主上傳 請自行衡量資料 並判別假消息
+				本網站不會承擔任何責任</p>
+		</div>
+</header>
+
+<body>
+
+	<div class="container">
+		<div class="row">
+			<p class="fw-bold">真實訊息涉及個人資料 請查看衛福部發布</p>
+			<p>疫調資訊應以中央流行疫情指揮中心或是各縣市政府統一發布為準確。</p>
+		</div>
+		<div class="row">
+			<p class="fw-bold">都大學了冷靜判斷資訊來源 避免獵巫或是人身攻擊</p>
+			<p>看到相關資訊時，切勿隨意轉傳，請先冷靜查證消息來源及內容，本網站資料皆由學生自主上傳，不保證所以資料完全正確。面對確診者或疑似感染者，應發揮同理心，沒必要獵巫，
+				互相信任方能建立讓感染者坦誠以告的環境，才能有效釐清感染源，防範其他人染疫。</p></br>
+		</div>
+		<div class="row">
+			<p class="fw-bold">若您與確診足跡重疊，或者有呼吸道症狀，切莫驚慌，請先配合衛服部疾病管制署公布的相關防疫資訊</p>
+			</br>
+		</div>
+		<div class="row">
+			<div class="d-grid gap-2">
+				<a th:href="@{/mapdata}" class="btn btn-primary">查詢學生自主通報累計確診和足跡</a>
+				<button type="button" class="btn btn-danger" data-bs-toggle="modal"
+					data-bs-target="#staticBackdrop">我是確診者我願意通報</button>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Modal -->
+	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title" id="staticBackdropLabel">請問你是否為確診者?</h2>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p class="fs-3" style="text-align: center;">請不要胡亂通報.</p>
+					<p>為確保個資保護，蒐集的資料，均善盡資料保護責任，個人資料最多存放 14 天，之後會刪除及銷毀。
+						這些資料只用於統計使用，不用於其他目的，資料皆存放在Azure SQL Database 有一定的保護措施。 個人資料項目Email
+						只用於接收驗證碼資訊，防止大量惡意通報，若故意釋出假消息不排除追述法律責任。
+						未受衛生主管機關匡列或未確診COVID19卻通報不實訊息者，根據傳染病防治法可罰最高新台幣三百萬元。
+						當您開始使用本服務並送出表單，即視為您已閱讀並了解上述條款，並同意遵守條款之約定。</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">離開</button>
+					<a th:href="@{/report}" class="btn btn-primary">了解</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer class="bg-light text-center text-lg-start">
+		<p></p><p></p><p></p>
+		<div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+			© 2022 東吳資管Howard &ensp;
+			<a class="text-reset fw-bold" href="mailto:a22511234@gmail.com">Send me mail</a>
+		</div>
+	</footer>
+
+</body>
+
+
+</html>
